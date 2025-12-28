@@ -7,7 +7,6 @@
 # ###########################################################
 
 from PyQt5 import QtWidgets, QtCore, Qt, QtGui
-import FlatCAMApp
 from camlib import *
 from FlatCAMTool import FlatCAMTool
 from ObjectUI import LengthEntry, RadioSet
@@ -21,7 +20,7 @@ from shapely.wkt import loads as sloads
 from shapely.wkt import dumps as sdumps
 from shapely.geometry.base import BaseGeometry
 
-from numpy import arctan2, Inf, array, sqrt, pi, ceil, sin, cos, sign, dot
+from numpy import arctan2, inf, array, sqrt, pi, ceil, sin, cos, sign, dot
 from numpy.linalg import solve
 
 # from mpl_toolkits.axes_grid.anchored_artists import AnchoredDrawingArea
@@ -1363,7 +1362,7 @@ class FlatCAMDraw(QtCore.QObject):
         """
 
         snap_x, snap_y = (x, y)
-        snap_distance = Inf
+        snap_distance = inf
 
         # ## Object (corner?) snap
         # ## No need for the objects, just the coordinates
@@ -1551,3 +1550,7 @@ def mag(vec):
 
 def poly2rings(poly):
     return [poly.exterior] + [interior for interior in poly.interiors]
+
+
+# Import FlatCAMApp at the end to avoid circular import issues
+import FlatCAMApp

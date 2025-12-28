@@ -10,11 +10,9 @@ from io import StringIO
 from PyQt5 import QtCore
 from copy import copy
 from ObjectUI import *
-import FlatCAMApp
 import inspect  # TODO: For debugging only.
 from camlib import *
 from FlatCAMCommon import LoudDict
-from FlatCAMDraw import FlatCAMDraw
 
 
 # #######################################
@@ -1738,3 +1736,8 @@ class FlatCAMGeometry(FlatCAMObj, Geometry):
         self.plot_element(self.solid_geometry)
 
         self.app.plotcanvas.auto_adjust_axes()
+
+
+# Import these at the end to avoid circular import issues
+from FlatCAMDraw import FlatCAMDraw
+import FlatCAMApp
