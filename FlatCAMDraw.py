@@ -1545,12 +1545,8 @@ def mag(vec):
 
 
 def poly2rings(poly):
-<<<<<<< HEAD
-    return [poly.exterior] + [interior for interior in poly.interiors]
-=======
     return [poly.exterior] + [interior for interior in poly.interiors]
 
 
 # Import FlatCAMApp at the end to avoid circular import issues
 import FlatCAMApp
->>>>>>> ba5c8760 (Multiple fixes for FlatCAM Qt5 adaptation)
