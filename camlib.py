@@ -10,7 +10,7 @@
 #import traceback
 
 from io import StringIO
-from numpy import arctan2, Inf, array, sqrt, pi, ceil, sin, cos, dot, float32, \
+from numpy import arctan2, inf, array, sqrt, pi, ceil, sin, cos, dot, float32, \
     transpose
 from numpy.linalg import solve, norm
 from matplotlib.figure import Figure
@@ -1607,7 +1607,7 @@ class Gerber (Geometry):
         # Optional start with G02 or G03, optional end with D01 or D02 with
         # optional coordinates but at least one in any order.
         self.circ_re = re.compile(r'^(?:G0?([23]))?(?=.*X([\+-]?\d+))?(?=.*Y([\+-]?\d+))' +
-                                  '?(?=.*I([\+-]?\d+))?(?=.*J([\+-]?\d+))?[XYIJ][^D]*(?:D0([12]))?\*$')
+                                  r'?(?=.*I([\+-]?\d+))?(?=.*J([\+-]?\d+))?[XYIJ][^D]*(?:D0([12]))?\*$')
 
         # G01/2/3 Occurring without coordinates
         self.interp_re = re.compile(r'^(?:G0?([123]))\*')
@@ -3794,10 +3794,10 @@ class CNCjob(Geometry):
 #     return [xmin, ymin, xmax, ymax]
 
 def get_bounds(geometry_list):
-    xmin = Inf
-    ymin = Inf
-    xmax = -Inf
-    ymax = -Inf
+    xmin = inf
+    ymin = inf
+    xmax = -inf
+    ymax = -inf
 
     #print "Getting bounds of:", str(geometry_set)
     for gs in geometry_list:
